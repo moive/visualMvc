@@ -9,9 +9,9 @@ namespace TaskManager.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        public ActionResult Index()
+        public string Index()
         {
-            return View();
+            return "<div>Hi, TaskManager</div>";
         }
     }
 }
