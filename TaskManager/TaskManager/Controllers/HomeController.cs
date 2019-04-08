@@ -9,10 +9,10 @@ namespace TaskManager.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        public ActionResult Index(int[] id)
+        public ActionResult Index(TaskDTO task)
         {
             return new ContentResult() {
-                Content = "<h1 class='heading-h1'>Hello TaskManager</h1>"
+                Content = string.Format("<h1 class='heading-h1'>Hello, {0} </h1>", task.Name)
             };
         }
     }
