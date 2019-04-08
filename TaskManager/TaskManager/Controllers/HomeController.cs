@@ -9,7 +9,7 @@ namespace TaskManager.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(int id, string name, string lastname)
         {
             return new ContentResult() {
                 Content = "<h1 class='heading-h1'>Hello TaskManager</h1>"
