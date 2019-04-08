@@ -11,7 +11,9 @@ namespace TaskManager.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return new FilePathResult("/images/logo.png","image/png");
+            return new ContentResult() {
+                Content = "<h1 class='heading-h1'>Hello TaskManager</h1>"
+            };
         }
     }
 }
