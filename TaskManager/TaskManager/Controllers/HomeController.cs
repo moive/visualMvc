@@ -9,9 +9,9 @@ namespace TaskManager.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        public string Index()
+        public ActionResult Index()
         {
-            return "<div>Hi, TaskManager</div>";
+            return new FilePathResult("/images/logo.png","image/png");
         }
     }
 }
