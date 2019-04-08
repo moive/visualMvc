@@ -11,8 +11,9 @@ namespace TaskManager.Controllers
         // GET: Home
         public ActionResult Index(TaskDTO task)
         {
-            return new ContentResult() {
-                Content = string.Format("<h1 class='heading-h1'>Hello, {0} </h1>", task.Name)
+            return new JsonResult() {
+                Data = task,
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }
     }
