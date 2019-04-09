@@ -24,7 +24,10 @@ namespace TaskManager.Controllers
             };
         }
         
-        // GET: Home
+        /// <summary>
+        /// Get list of tasks
+        /// </summary>
+        
         public ActionResult Index(int? start, int? length, int? id)
         {
             List<TaskDTO> tasks = _Tasks;
@@ -50,6 +53,10 @@ namespace TaskManager.Controllers
             };
         }
 
+        /// <summary>
+        /// Print a task by task ID
+        /// </summary>
+        
         public ActionResult GetTaskById(int? id) {
 
             if (!id.HasValue)
