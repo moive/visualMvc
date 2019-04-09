@@ -30,7 +30,7 @@ namespace TaskManager.Controllers
         
         public ActionResult Index(int? start, int? length, int? id)
         {
-            return GetTaskById(id);
+            return RedirectToAction("GetTaskById", new { id = id });
 
             List<TaskDTO> tasks = _Tasks;
 
