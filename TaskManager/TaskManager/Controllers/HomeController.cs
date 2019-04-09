@@ -27,6 +27,8 @@ namespace TaskManager.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            HttpContext context = System.Web.HttpContext.Current;
+
             StringBuilder content = new StringBuilder();
 
             foreach (TaskDTO task in _Tasks) {
