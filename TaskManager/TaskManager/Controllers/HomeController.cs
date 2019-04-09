@@ -25,19 +25,48 @@ namespace TaskManager.Controllers
         }
         
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(int? start, int? length, int? id)
         {
-            HttpContext context = System.Web.HttpContext.Current;
+            List<TaskDTO> tasks = _Tasks;
+
+            if (start.HasValue) {
+                tasks = tasks.Skip(start.Value).ToList();
+            }
+
+            if (length.HasValue) {
+                tasks = tasks.Take(length.Value).ToList();
+            }
+
 
             StringBuilder content = new StringBuilder();
 
-            foreach (TaskDTO task in _Tasks) {
+            foreach (TaskDTO task in tasks) {
                 content.Append(string.Format("<div>Id: {0}, Name: {1}</div>", task.ID, task.Name));
             }
 
             return new ContentResult()
             {
                 Content = content.ToString()
+            };
+        }
+
+        public ActionResult GetTaskById(int? id) {
+
+            if (!id.HasValue)
+            {
+                return new ContentResult()
+                {
+                    Content = "<div>ID parameter is required!</div>"
+                };
+            }
+
+            TaskDTO task = _Tasks.Where(t => t.ID == id).FirstOrDefault();
+
+            return new ContentResult()
+            {
+                Content = task == null ?
+                string.Format("<div>Task {0} not found</div>", id) :
+                string.Format("<div>Id: {0}, Name: {1}</div>", task.ID, task.Name)
             };
         }
     }
