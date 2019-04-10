@@ -29,6 +29,7 @@ namespace TaskManager.Controllers
         /// </summary>
         public ActionResult Index()
         {
+            ViewBag.ListOfTasks = _Tasks;
             return View();
         }
     }
