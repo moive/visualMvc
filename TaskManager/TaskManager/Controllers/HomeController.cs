@@ -18,9 +18,9 @@ namespace TaskManager.Controllers
         {
             _Tasks = new List<TaskDTO>()
             {
-                new TaskDTO(){ID=1, Name="Pasear a mi perro"},
-                new TaskDTO(){ID=2, Name="Tirar la basura"},
-                new TaskDTO(){ID=3, Name="Llamar a mami"}
+                new TaskDTO(){ID=1, Name="Pasear a mi perro", DueDate = DateTime.Now.AddDays(1)},
+                new TaskDTO(){ID=2, Name="Tirar la basura", DueDate = DateTime.Now.AddDays(2)},
+                new TaskDTO(){ID=3, Name="Llamar a mami", DueDate = DateTime.Now.AddDays(1)}
             };
         }
         
@@ -30,6 +30,16 @@ namespace TaskManager.Controllers
         public ActionResult Index()
         {
             ViewBag.ListOfTasks = _Tasks;
+            return View();
+        }
+
+        /// <summary>
+        /// Get Task without layout
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Task()
+        {
+            ViewBag.Description = "View without layout";
             return View();
         }
     }
