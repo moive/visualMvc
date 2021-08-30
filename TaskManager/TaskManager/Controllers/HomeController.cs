@@ -20,7 +20,7 @@ namespace TaskManager.Controllers
             {
                 new TaskDTO(){ID=1, Name="Pasear a mi perro", DueDate = DateTime.Now.AddDays(1)},
                 new TaskDTO(){ID=2, Name="Tirar la basura", DueDate = DateTime.Now.AddDays(2)},
-                new TaskDTO(){ID=3, Name="Llamar a mami", DueDate = DateTime.Now.AddDays(1)}
+                new TaskDTO(){ID=3, Name="Llamar a mami", DueDate = DateTime.Now.AddDays(-1)}
             };
         }
         

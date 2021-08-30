@@ -14,8 +14,9 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (TaskDTO task in ViewBag.ListOfTasks) {
-            <tr>
+        @foreach (TaskDTO task in ViewBag.ListOfTasks)
+        {
+            <tr @(task.DueDate < DateTime.Now ? "style=color:orange" : "")>
                 <td>@task.ID</td>
                 <td>@task.Name</td>
                 <td>@task.CreateDate.ToShortDateString()</td>
