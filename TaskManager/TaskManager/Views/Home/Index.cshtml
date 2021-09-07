@@ -1,4 +1,4 @@
-﻿
+﻿@model TaskManager.Models.TaskList
 @{
     ViewBag.Title = "Lista de Tareas";
 }
@@ -14,7 +14,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (TaskDTO task in ViewBag.ListOfTasks)
+        @foreach (TaskDTO task in Model.ListOfTasks )
         {
             <tr @(task.DueDate < DateTime.Now ? "style=color:orange" : "")>
                 <td>@task.ID</td>
