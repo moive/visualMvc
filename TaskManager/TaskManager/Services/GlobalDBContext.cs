@@ -6,7 +6,7 @@ using System.Web;
 
 namespace TaskManager.Services
 {
-    public class GlobalDBContext: DbContext
+    public class GlobalDBContext : DbContext
     {
         public GlobalDBContext() : base("mgcDb")
         {
@@ -17,6 +17,16 @@ namespace TaskManager.Services
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new TaskModel());
+        }
+
+        public IQueryable<TaskDTO> Tasks(bool trackChanges = false)
+        {
+            IQueryable<TaskDTO> query = this.Set<TaskDTO>();
+            if (!trackChanges)
+            {
+                query = query.AsNoTracking();
+            }
+            return query;
         }
     }
 }
