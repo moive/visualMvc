@@ -5,24 +5,20 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using TaskManager.Models;
+using TaskManager.Tasks;
 
 namespace TaskManager.Controllers
 {
     public class HomeController : Controller
     {
-        private List<TaskDTO> _Tasks;
+        private TaskQueryServices _taskQueryServices;
 
         /// <summary>
         /// Constructor, initialize list of Task
         /// </summary>
         public HomeController()
         {
-            _Tasks = new List<TaskDTO>()
-            {
-                new TaskDTO(){ID=1, Name="Pasear a mi perro", DueDate = DateTime.Now.AddDays(1)},
-                new TaskDTO(){ID=2, Name="Tirar la basura", DueDate = DateTime.Now.AddDays(2)},
-                new TaskDTO(){ID=3, Name="Llamar a mami", DueDate = DateTime.Now.AddDays(-1)}
-            };
+            _taskQueryServices = new TaskQueryServices();
         }
 
         /// <summary>
@@ -32,7 +28,7 @@ namespace TaskManager.Controllers
         {
             TaskList model = new TaskList()
             {
-                ListOfTasks = _Tasks
+                ListOfTasks = _taskQueryServices.GetTasks()
 
             };
 

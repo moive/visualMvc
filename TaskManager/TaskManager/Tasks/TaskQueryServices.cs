@@ -16,7 +16,7 @@ namespace TaskManager.Tasks
         }
         public List<TaskDTO> GetTasks()
         {
-            return _context.Tasks.ToList();
+            return _context.Tasks().ToList();
         }
     }
 }

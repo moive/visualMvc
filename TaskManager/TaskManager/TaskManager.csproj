@@ -99,7 +99,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTOs\TaskDTO.cs" />
+    <Compile Include="Tasks\TaskDTO.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -112,8 +112,9 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\TaskList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\GlobalDBContext.cs" />
+    <Compile Include="Services\GlobalDbContext.cs" />
     <Compile Include="Services\TaskModel.cs" />
+    <Compile Include="Tasks\TaskQueryServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

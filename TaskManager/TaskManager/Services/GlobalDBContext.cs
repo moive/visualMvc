@@ -6,9 +6,9 @@ using System.Web;
 
 namespace TaskManager.Services
 {
-    public class GlobalDBContext : DbContext
+    public class GlobalDbContext : DbContext
     {
-        public GlobalDBContext() : base("mgcDb")
+        public GlobalDbContext() : base("mgcDb")
         {
             this.Configuration.LazyLoadingEnabled = false;
             this.Configuration.ProxyCreationEnabled = false;
