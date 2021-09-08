@@ -1,0 +1,25 @@
+﻿@model TaskManager.Models.TaskList
+@{
+    ViewBag.Title = "List of Tasks";
+}
+
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Create date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (TaskDTO task in Model.ListOfTasks)
+        {
+            <tr @(task.DueDate < DateTime.Now ? "style=color:orange" : "")>
+                <td>@task.ID</td>
+                <td>@task.Name</td>
+                <td>@task.CreateDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
