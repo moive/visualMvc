@@ -1,0 +1,13 @@
+﻿@model TaskManager.Models.TaskView
+
+@if (!String.IsNullOrWhiteSpace(Model.ErrorMessage)) {
+    <div class="text-danger">@Model.ErrorMessage</div>
+}
+
+@if (Model.Task != null)
+{
+    <div>ID: @Model.Task.ID</div>
+    <div>Name: @Model.Task.Name</div>
+    <div>Create Date: @Model.Task.CreateDate</div>
+    <div>DueDate: @Model.Task.DueDate</div>
+}

@@ -99,8 +99,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\TaskController.cs" />
-    <Compile Include="Tasks\TaskDTO.cs" />
+    <Compile Include="Controllers\TasksController.cs" />
+    <Compile Include="AppCode\Tasks\TaskDTO.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -112,10 +112,11 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\TaskList.cs" />
+    <Compile Include="Models\TaskView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\GlobalDbContext.cs" />
-    <Compile Include="Services\TaskModel.cs" />
-    <Compile Include="Tasks\TaskQueryServices.cs" />
+    <Compile Include="AppCode\Services\GlobalDbContext.cs" />
+    <Compile Include="AppCode\Services\TaskModel.cs" />
+    <Compile Include="AppCode\Tasks\TaskQueryServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -126,7 +127,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Task.cshtml" />
     <Content Include="Views\Shared\TopMenu.cshtml" />
-    <Content Include="Views\Task\TaskList.cshtml" />
+    <Content Include="Views\Tasks\TaskList.cshtml" />
+    <Content Include="Views\Tasks\TaskView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
