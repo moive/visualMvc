@@ -3,10 +3,15 @@
     ViewBag.Title = "List of Tasks";
 }
 
+<h2>@ViewBag.Title</h2>
+<div>
+    <a href="/task/new" class="btn btn-primary">Create Task New</a>
+</div>
 
-<table>
+<table class="table">
     <thead>
         <tr>
+            <th width="200"></th>
             <th>ID</th>
             <th>Name</th>
             <th>Create date</th>
@@ -16,6 +21,10 @@
         @foreach (TaskDTO task in Model.ListOfTasks)
         {
             <tr @(task.DueDate < DateTime.Now ? "style=color:orange" : "")>
+                <td>
+                    <a href="/task/edit/@task.ID" class="btn btn-warning">Edit</a>
+                    <a href="/task/delete/@task.ID" class="btn btn-danger">Delete</a>
+                </td>
                 <td>@task.ID</td>
                 <td>@task.Name</td>
                 <td>@task.CreateDate.ToShortDateString()</td>
