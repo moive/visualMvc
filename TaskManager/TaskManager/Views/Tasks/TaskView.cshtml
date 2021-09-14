@@ -1,13 +1,32 @@
 ﻿@model TaskManager.Models.TaskView
 
-@if (!String.IsNullOrWhiteSpace(Model.ErrorMessage)) {
+@if (!String.IsNullOrWhiteSpace(Model.ErrorMessage))
+{
     <div class="text-danger">@Model.ErrorMessage</div>
 }
 
 @if (Model.Task != null)
 {
-    <div>ID: @Model.Task.ID</div>
-    <div>Name: @Model.Task.Name</div>
-    <div>Create Date: @Model.Task.CreateDate</div>
-    <div>DueDate: @Model.Task.DueDate</div>
+    using (Html.BeginForm())
+    {
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Task.ID, new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.Task.ID, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Task.Name, new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.Task.Name, new { @class = "form-control"})
+        </div>
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Task.CreateDate, new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.Task.CreateDate, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Task.DueDate, new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.Task.DueDate, new { @class = "form-control" })
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-danger">Save</button>
+        </div>
+    }
 }

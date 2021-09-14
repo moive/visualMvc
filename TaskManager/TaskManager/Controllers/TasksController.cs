@@ -59,6 +59,25 @@ namespace TaskManager.Controllers
         }
 
         /// <summary>
+        /// Update an existing task
+        /// </summary>
+        /// <param name="task"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Edit(TaskDTO task)
+        {
+            //save changes
+            HttpContext context = System.Web.HttpContext.Current;
+
+            TaskView model = new TaskView()
+            {
+                Task = task,
+            };
+
+            return View("TaskView", model);
+        }
+
+        /// <summary>
         /// Go to delete task View
         /// </summary>
         /// <returns></returns>
