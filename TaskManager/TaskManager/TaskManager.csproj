@@ -99,6 +99,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppCode\Tasks\CommandService.cs" />
     <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="AppCode\Tasks\TaskDTO.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />

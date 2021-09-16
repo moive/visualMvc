@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TaskManager.CommandServices;
 using TaskManager.Models;
 using TaskManager.Tasks;
 
@@ -11,6 +12,7 @@ namespace TaskManager.Controllers
     public class TasksController : Controller
     {
         private TaskQueryServices _taskQueryServices;
+        private TaskCommandService _taskCommandService;
 
         /// <summary>
         /// Constructor, initialize list of Task
@@ -18,6 +20,7 @@ namespace TaskManager.Controllers
         public TasksController()
         {
             _taskQueryServices = new TaskQueryServices();
+            _taskCommandService = new TaskCommandService();
         }
 
         /// <summary>
@@ -66,13 +69,23 @@ namespace TaskManager.Controllers
         [HttpPost]
         public ActionResult Edit(TaskDTO task)
         {
-            //save changes
-            HttpContext context = System.Web.HttpContext.Current;
-
+            // return the task to the user
             TaskView model = new TaskView()
             {
                 Task = task,
             };
+
+            //save changes
+            //HttpContext context = System.Web.HttpContext.Current;
+            try
+            {
+                _taskCommandService.UpdateTask(task);
+                model.SuccessMessage = "Task successfully saved";
+            }
+            catch (Exception ex)
+            {
+                model.ErrorMessage = ex.ToString();
+            }
 
             return View("TaskView", model);
         }

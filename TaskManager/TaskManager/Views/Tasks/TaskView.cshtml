@@ -5,6 +5,11 @@
     <div class="text-danger">@Model.ErrorMessage</div>
 }
 
+@if (!String.IsNullOrWhiteSpace(Model.SuccessMessage))
+{
+    <div class="text-success">@Model.SuccessMessage</div>
+}
+
 @if (Model.Task != null)
 {
     using (Html.BeginForm())
