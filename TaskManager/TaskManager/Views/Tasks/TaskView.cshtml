@@ -14,18 +14,24 @@
 {
     using (Html.BeginForm())
     {
-        <div class="mb-3">
-            @Html.LabelFor(m => m.Task.ID, new { @class = "form-label" })
-            @Html.TextBoxFor(m => m.Task.ID, new { @class = "form-control", @readonly = "readonly" })
-        </div>
+        if (Model.Task.ID != 0)
+        {
+            <div class="mb-3">
+                @Html.LabelFor(m => m.Task.ID, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Task.ID, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        }
         <div class="mb-3">
             @Html.LabelFor(m => m.Task.Name, new { @class = "form-label" })
             @Html.TextBoxFor(m => m.Task.Name, new { @class = "form-control"})
         </div>
-        <div class="mb-3">
-            @Html.LabelFor(m => m.Task.CreateDate, new { @class = "form-label" })
-            @Html.TextBoxFor(m => m.Task.CreateDate, new { @class = "form-control", @readonly = "readonly" })
-        </div>
+        if(Model.Task.ID != 0)
+        {
+            <div class="mb-3">
+                @Html.LabelFor(m => m.Task.CreateDate, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Task.CreateDate, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        }
         <div class="mb-3">
             @Html.LabelFor(m => m.Task.DueDate, new { @class = "form-label" })
             @Html.TextBoxFor(m => m.Task.DueDate, new { @class = "form-control" })

@@ -43,20 +43,38 @@ namespace TaskManager.Controllers
         /// <returns></returns>
         public ActionResult New()
         {
-            return View("TaskView", new TaskView());
+            return View("TaskView", new TaskView()
+            {
+                Task = new TaskDTO()
+                {
+                    DueDate = DateTime.Now.AddDays(1),
+                }
+            });
+        }
+
+        /// <summary>
+        /// Go to new task View
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult New(TaskDTO task)
+        {
+            _taskCommandService.CreateTask(task);
+            return RedirectToAction("Edit", new { id = task.ID, fc = 1 });
         }
 
         /// <summary>
         /// Go to edit task View
         /// </summary>
         /// <returns></returns>
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id, int? fc)
         {
             TaskDTO task = _taskQueryServices.GetTasksByID(id);
             TaskView model = new TaskView()
             {
                 Task = task,
-                ErrorMessage = task == null ? "Error - Task not found" : ""
+                ErrorMessage = task == null ? "Error - Task not found" : "",
+                SuccessMessage = fc.HasValue && fc == 1 ? "Task successfully created": ""
             };
             return View("TaskView", model);
         }

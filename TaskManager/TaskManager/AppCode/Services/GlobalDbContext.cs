@@ -28,5 +28,10 @@ namespace TaskManager.Services
             }
             return query;
         }
+
+        public void Add<T>(T theElement) where T: class
+        {
+            this.Set<T>().Add(theElement);
+        }
     }
 }

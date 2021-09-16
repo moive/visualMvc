@@ -23,5 +23,20 @@ namespace TaskManager.CommandServices
                 context.SaveChanges();
             }
         }
+
+        public void CreateTask(TaskDTO task)
+        {
+            using (GlobalDbContext context = new GlobalDbContext())
+            {
+                //assing create date
+                task.CreateDate = DateTime.Now;
+
+                //add task to context
+                context.Add(task);
+
+                //save changes to db
+                context.SaveChanges();
+            }
+        }
     }
 }
