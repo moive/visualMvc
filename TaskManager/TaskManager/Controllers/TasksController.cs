@@ -57,10 +57,22 @@ namespace TaskManager.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult New(TaskDTO task)
         {
-            _taskCommandService.CreateTask(task);
-            return RedirectToAction("Edit", new { id = task.ID, fc = 1 });
+            if (ModelState.IsValid)
+            {
+                _taskCommandService.CreateTask(task);
+                return RedirectToAction("Edit", new { id = task.ID, fc = 1 });
+            }
+            else
+            {
+                TaskView model = new TaskView()
+                {
+                    Task = task
+                };
+                return View("TaskView",model);
+            }
         }
 
         /// <summary>
@@ -97,8 +109,11 @@ namespace TaskManager.Controllers
             //HttpContext context = System.Web.HttpContext.Current;
             try
             {
-                _taskCommandService.UpdateTask(task);
-                model.SuccessMessage = "Task successfully saved";
+                if (ModelState.IsValid)
+                {
+                    _taskCommandService.UpdateTask(task);
+                    model.SuccessMessage = "Task successfully saved";
+                }
             }
             catch (Exception ex)
             {
