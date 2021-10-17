@@ -46,5 +46,15 @@ namespace TaskManager.CommandServices
                 return context.Tasks(true).Where(t => t.Name == name).Count() == 0;
             }
         }
+
+        public void DeleteTask(int id)
+        {
+            using (GlobalDbContext context = new GlobalDbContext())
+            {
+                TaskDTO task = context.Tasks().Where(x => x.ID == id).FirstOrDefault();
+                context.Remove(task);
+                context.SaveChanges();
+            }
+        }
     }
 }

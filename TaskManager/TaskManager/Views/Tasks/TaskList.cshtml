@@ -23,7 +23,7 @@
             <tr @(task.DueDate < DateTime.Now ? "style=color:orange" : "")>
                 <td>
                     <a href="/tasks/edit/@task.ID" class="btn btn-warning">Edit</a>
-                    <a href="/tasks/delete/@task.ID" class="btn btn-danger">Delete</a>
+                    <a onclick="return confirm('Are you sure to delete: \n @task.Name')" href="/tasks/delete/@task.ID" class="btn btn-danger">Delete</a>
                 </td>
                 <td>@task.ID</td>
                 <td>@task.Name</td>

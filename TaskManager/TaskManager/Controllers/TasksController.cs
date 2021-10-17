@@ -141,12 +141,20 @@ namespace TaskManager.Controllers
         /// <returns></returns>
         public ActionResult Delete(int id)
         {
-            //TaskView model = new TaskView()
-            //{
-            //    Task = _taskQueryServices.GetTasksByID(id)
-            //};
-            //return View("TaskView", model);
-            throw new NotImplementedException();
+
+            //save changes
+            //HttpContext context = System.Web.HttpContext.Current;
+            try
+            {
+                _taskCommandService.DeleteTask(id);
+            }
+            catch (Exception ex)
+            {
+                throw new NotImplementedException();
+                //model.ErrorMessage = ex.ToString();
+            }
+
+            return RedirectToAction("index");
         }
     }
 }

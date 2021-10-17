@@ -33,5 +33,10 @@ namespace TaskManager.Services
         {
             this.Set<T>().Add(theElement);
         }
+
+        public virtual void Remove(TaskDTO task) 
+        {
+            this.Entry(task).State = EntityState.Deleted;
+        }
     }
 }
