@@ -38,5 +38,13 @@ namespace TaskManager.CommandServices
                 context.SaveChanges();
             }
         }
+
+        public bool taskNotExists(string name)
+        {
+            using (GlobalDbContext context = new GlobalDbContext())
+            {
+                return context.Tasks(true).Where(t => t.Name == name).Count() == 0;
+            }
+        }
     }
 }

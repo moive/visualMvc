@@ -52,6 +52,18 @@ namespace TaskManager.Controllers
             });
         }
 
+
+        public JsonResult CheckTaskNameExists(string name)
+        {
+            bool taskExists = _taskCommandService.taskNotExists(name);
+
+            return new JsonResult()
+            {
+                Data = taskExists,
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
+
         /// <summary>
         /// Go to new task View
         /// </summary>
@@ -71,7 +83,7 @@ namespace TaskManager.Controllers
                 {
                     Task = task
                 };
-                return View("TaskView",model);
+                return View("TaskView", model);
             }
         }
 
@@ -86,7 +98,7 @@ namespace TaskManager.Controllers
             {
                 Task = task,
                 ErrorMessage = task == null ? "Error - Task not found" : "",
-                SuccessMessage = fc.HasValue && fc == 1 ? "Task successfully created": ""
+                SuccessMessage = fc.HasValue && fc == 1 ? "Task successfully created" : ""
             };
             return View("TaskView", model);
         }

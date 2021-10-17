@@ -16,7 +16,7 @@ namespace TaskManager.Tasks
         }
         public List<TaskDTO> GetTasks()
         {
-            using(GlobalDbContext context = new GlobalDbContext())
+            using (GlobalDbContext context = new GlobalDbContext())
             {
                 return context.Tasks().ToList();
             }
@@ -26,7 +26,7 @@ namespace TaskManager.Tasks
         {
             using (GlobalDbContext context = new GlobalDbContext())
             {
-                return context.Tasks().Where(t=> t.ID == id).FirstOrDefault();
+                return context.Tasks().Where(t => t.ID == id).FirstOrDefault();
             }
         }
     }
